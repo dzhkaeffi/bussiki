@@ -11,7 +11,7 @@ let bus_stops = []
 let bus_times = []
 let bus_routes = []
 let bus_trips = []
-db.each(`select * from bus_stops_test`, (err, row)=> {
+db.each(`select * from bus_stops`, (err, row)=> {
   if (err) throw err;
   bus_stops.push(row)
 })

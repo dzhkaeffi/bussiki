@@ -31,10 +31,21 @@ function App() {
     fetchData();
   }, [])
   let stop_areas = []
+  let stop_names = []
   stops.map((stop)=>{
-    if (!stop_areas.includes(stop.stop_area))stop_areas.push(stop.stop_area)
+    if (!stop_areas.includes(stop.stop_area) && !stop.stop_area == "") stop_areas.push(stop.stop_area)
+    // stop_names.push(`${stop.stop_name} (${stop.stop_id})`)
   })
-  const [selectedRegion, selectRegion] = useState()
+  stop_areas.sort()
+  const [selectedRegion, selectRegionCombo] = useState()
+  const selectRegion = (region) => {
+    selectRegionCombo(region)
+    stops.map((stop)=>{
+      if (stop.stop_area == region) stop_names.push(`${stop.stop_name} (${stop.stop_id})`)
+    })
+    console.log(`Region selected: ${region}`)
+    console.log(stop_names)
+  }
   return (
     <div>
       <Combobox
@@ -43,6 +54,12 @@ function App() {
         placeholder="Select region"
         autoSelectMatches
         onSelect={selectedRegion => selectRegion(selectedRegion)}
+      />
+        <Combobox
+        id='stopNames'
+        data={stop_names}
+        placeholder="Select stop"
+        autoSelectMatches
       />
       <p>{selectedRegion}</p>
     </div>
