@@ -1,3 +1,92 @@
-.App {
+/* body {
+  background-color: #282c34;
+  color: white;
+  font-family: Sans-Serif;
   text-align: center;
+} */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+body {
+    /* background-color: #931C1C; */
+    color: white;
+    font-family: Montserrat;
+    margin: 0;
+    overflow: hidden;
+}
+.avialableBusses {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -200px;
+}
+.spacergrid {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    aspect-ratio: 9/16;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.grid {
+    background-image: url("./grid.svg");
+}
+.userLocationDiv {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 25px 0 0 0;
+    width: 600px;
+    padding: 1.5rem 0 1.5rem 0;
+    border-radius: 0.3rem;
+    background: #001122dc;
+    font-size: 1.25rem;
+}
+.userLocationDiv span {
+    color: #00ba86;
+}
+.submit {
+    color: #fff;
+    background-color: #001122;
+    border-color: #0011223a;
+    margin: 15px 0 0 0;
+    cursor: pointer;
+    /* display: block; */
+    width: 100%;
+    padding: 0.25rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: 0.3rem;
+    transition: 0.2s;
+}
+.submit:hover {
+    background-color: #002143;
+    border-color: #00224346;
+    box-shadow: 2px 2px 0 0 #00112214;
+}
+.combobox-widgets {
+    width: 500px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+.widget-one {
+    padding: 15px 0px 15px 0px;
+}
+.widget-two {
+    padding: 0px 0px 15px 0px;
+    /* width: 375px; */
+}
+.notGrantedDiv {
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 700px;
+    border-radius: 10px;
+    background: #001122ab;
+    box-shadow: 10px 10px #001122e3;
+    font-size: 0.9rem;
 }
