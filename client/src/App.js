@@ -123,7 +123,6 @@ function App() {
         const selectedStop = document.getElementsByName("stopNames")[0].value;
         let stop_code_si = selectedStop.indexOf("(") + 1;
         let stop_code_ei = selectedStop.indexOf(")");
-        const stop_code = selectedStop.slice(stop_code_si, stop_code_ei);
         let stop_ids = [];
         let trip_ids = [];
         let route_ids = [];
@@ -172,6 +171,17 @@ function App() {
         }
         // CODE
         console.log(shortNames);
+        const bus_ids = document.querySelector(".bus_ids");
+        while (bus_ids.lastElementChild) {
+            bus_ids.removeChild(bus_ids.lastElementChild);
+        }
+        shortNames.map((name) => {
+            const id_elem = document.createElement("button");
+            id_elem.className = "busButton";
+            id_elem.key = name;
+            id_elem.innerHTML = name;
+            bus_ids.appendChild(id_elem);
+        });
     };
     // WEB PAGE RENDER
     return (
@@ -230,12 +240,9 @@ function App() {
                         <span id="userClosestStop"></span>
                     </div>
                     <div className="avialableBusses">
+                        <br></br>
                         Avialable Busses:
-                        <select>
-                            {shortNames.forEach((name) => {
-                                <option>a</option>;
-                            })}
-                        </select>
+                        <div className="bus_ids"></div>
                     </div>
                 </div>
             ) : (
