@@ -114,10 +114,11 @@ function App() {
     );
   };
   const [shortNames, setShortNames] = useState([]);
-  let short_names = [];
   const [selectedStopID, setSelectedStopID] = useState();
   // HANDLE CONFIRM ----------------------------------
-  const selectShortNames = () => {
+  const selectShortNames = () => {};
+  const handleConfirm = () => {
+    let short_names = [];
     const selectedStop = document.getElementsByName("stopNames")[0].value;
     let stop_code_si = selectedStop.indexOf("(") + 1;
     let stop_code_ei = selectedStop.indexOf(")");
@@ -146,8 +147,6 @@ function App() {
         }
       });
     });
-  };
-  const showBusses = () => {
     if (selectRegion) {
       console.log("Region selected: OK");
       if (selectedStop) {
@@ -158,9 +157,6 @@ function App() {
       }
     }
     console.log("Short names:", shortNames);
-  };
-  const handleConfirm = () => {
-    showBusses();
     const bus_ids = document.querySelector(".bus_ids");
     while (bus_ids.lastElementChild) {
       bus_ids.removeChild(bus_ids.lastElementChild);
@@ -204,6 +200,7 @@ function App() {
           if (correct_route_ids.includes(trip.route_id))
             correct_trip_ids.push(trip.trip_id);
         });
+        // Find bus_ids with route_ids by trip_ids
         times.forEach((time) => {
           if (
             correct_trip_ids.includes(time.trip_id) &&
@@ -214,6 +211,7 @@ function App() {
             // departure_times.push(time.departure_time);
           }
         });
+        console.log(correct_route_ids);
         setArrivalTimes(arrival_times.sort());
         let closestTimes = [];
         let closestFive = [];
@@ -255,7 +253,6 @@ function App() {
       });
     });
   };
-
   //
   // WEB PAGE RENDER
   return (
